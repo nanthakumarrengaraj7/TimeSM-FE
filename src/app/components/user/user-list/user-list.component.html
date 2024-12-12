@@ -1,0 +1,70 @@
+<div class="container mt-4">
+    <h3 class="mb-4">User List</h3>
+    <button class="mb-4" (click)="adduser()">Add User</button>
+  
+    <!-- Search Input -->
+    <div class="mb-3">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Search Users"
+        [(ngModel)]="searchTerm"
+        (input)="filterUsers()"
+      />
+    </div>
+  
+    <!-- Department Dropdown -->
+    <div class="mb-3">
+      <select
+        class="form-control"
+        [(ngModel)]="selectedDepartment"
+        (change)="filterUsers()"
+      >
+        <option value="">All Departments</option>
+        <option *ngFor="let department of departments" [value]="department">
+          {{ department }}
+        </option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <select
+        class="form-control"
+        [(ngModel)]="selectedBusinessUnit"
+        (change)="filterUsers()"
+      >
+        <option value="">All BusinessUnits</option>
+        <option *ngFor="let bu of businessUnits" [value]="bu">
+          {{ bu }}
+        </option>
+      </select>
+    </div>
+  
+    <!-- User Table -->
+    <table class="table table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th>Username</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Department</th>
+          <th>Business Unit</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of filteredUsers">
+          <td>{{ user.username }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.phone }}</td>
+          <td>{{ user.department }}</td>
+          <td>{{user.businessUnit}}</td>
+          <td>
+            <button class="btn btn-warning btn-sm" (click)="editUser(user._id)">Edit</button>
+            <button class="btn btn-danger btn-sm" (click)="deleteUser(user._id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

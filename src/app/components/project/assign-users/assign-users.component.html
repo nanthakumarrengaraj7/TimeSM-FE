@@ -1,0 +1,19 @@
+<div class="container mt-5">
+    <h2>Assign Users to Project</h2>
+    <form (ngSubmit)="assignUsers()" #userForm="ngForm">
+      <div class="form-group">
+        <label for="projectId">Select Project</label>
+        <select class="form-control" id="projectId" [(ngModel)]="assignment.projectId" name="projectId" required>
+          <option *ngFor="let project of projects" [value]="project._id">{{ project.projectName }}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="users">Select Users</label>
+        <select class="form-control" id="users" [(ngModel)]="assignment.users" name="users" multiple required>
+          <option *ngFor="let user of users" [value]="user._id">{{ user.name }}</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-success mt-3">Assign Users</button>
+    </form>
+  </div>
+  

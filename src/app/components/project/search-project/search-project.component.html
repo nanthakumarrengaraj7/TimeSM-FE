@@ -1,0 +1,32 @@
+<div class="container mt-5">
+    <h2>Search Projects</h2>
+    <div class="form-group">
+      <label for="searchTerm">Project Name</label>
+      <input type="text" class="form-control" id="searchTerm" [(ngModel)]="searchTerm" (input)="searchProjects()" placeholder="Search by project name">
+    </div>
+  
+    <div *ngIf="projects.length > 0">
+      <h3>Search Results</h3>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Project Name</th>
+            <th scope="col">Client Name</th>
+            <th scope="col">Department</th>
+            <th scope="col">Business Unit</th>
+            <th scope="col">Project Type</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let project of projects">
+            <td>{{ project.projectName }}</td>
+            <td>{{ project.clientName }}</td>
+            <td>{{ project.department }}</td>
+            <td>{{ project.businessUnit }}</td>
+            <td>{{ project.projectType }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
