@@ -33,8 +33,8 @@
               </div>
               <div class="form-group">
                 <label for="users">Select Users</label>
-                <select class="form-control" id="users" [(ngModel)]="assignment.users" name="users" multiple required>
-                  <option *ngFor="let user of users" [value]="user._id">{{ user.name }}</option>
+                <select class="form-control" id="users" [(ngModel)]="assignment.userIds" name="users" multiple required>
+                  <option *ngFor="let user of users" [value]="user._id">{{ user.username }}</option>
                 </select>
               </div>
               <div class="d-flex justify-content-between mt-4">

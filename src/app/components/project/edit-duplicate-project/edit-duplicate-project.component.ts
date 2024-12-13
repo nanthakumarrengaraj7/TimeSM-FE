@@ -15,7 +15,8 @@ export class EditDuplicateProjectComponent implements OnInit {
     clientName: '',
     department: '',
     businessUnit: '',
-    projectType: ''
+    projectType: '',
+    _id: ''
   };
 
   constructor(
@@ -30,23 +31,24 @@ export class EditDuplicateProjectComponent implements OnInit {
   }
 
   getProjectDetails() {
-    this.projectService.getProjectById(this.projectId).subscribe((data:any) => {
-      this.project = data;
+    this.projectService.getProjectById(this.projectId).subscribe((res:any) => {
+      this.project = res.data;
     });
   }
 
   editProject() {
     this.projectService.updateProject(this.projectId, this.project).subscribe((response:any) => {
       console.log('Project updated:', response);
-      this.router.navigate(['/projects']);
+      this.router.navigate(['/project-management/list-project']);
     });
   }
 
   duplicateProject() {
-    const duplicateProject = { ...this.project, projectName: `${this.project.projectName} - Copy` };
+    const { _id, ...dataWithoutId } = this.project;
+    const duplicateProject = { ...dataWithoutId, projectName: `${this.project.projectName} - Copy` };
     this.projectService.addProject(duplicateProject).subscribe((response:any) => {
       console.log('Project duplicated:', response);
-      this.router.navigate(['/projects']);
+      this.router.navigate(['/project-management/list-project'])
     });
   }
   back(){

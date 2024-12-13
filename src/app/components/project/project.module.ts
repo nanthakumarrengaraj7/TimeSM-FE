@@ -13,6 +13,7 @@ import { ProjectRoutingModule } from './project.routing.module';
 import { ProjectService } from '../../../services/project.service';
 import { UserService } from '../../../services/user.service';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { NgSelectModule } from '@ng-select/ng-select';
     CommonModule,
     FormsModule,
     NgSelectModule,
-    HttpClientModule
+    HttpClientModule,
+    NgMultiSelectDropDownModule.forRoot()
   ],
   providers: [AuthService, ProjectService,UserService]
 })

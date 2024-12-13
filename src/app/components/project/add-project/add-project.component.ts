@@ -21,7 +21,7 @@ export class AddProjectComponent {
 
   addProject() {
     this.projectService.addProject(this.project).subscribe(response => {
-      console.log('Project added:', response);
+      this.router.navigate(['/project-management/list-project'])
     });
   }
   back(){

@@ -14,10 +14,10 @@ export class AssignUsersComponent implements OnInit {
   users: any[] = [];
   assignment = {
     projectId: '',
-    users: []
+    userIds: []
   };
 
-  constructor(private projectService: ProjectService, private userService: UserService,private router:Router) {}
+  constructor(private projectService: ProjectService, private userService: UserService,private router:Router) { }
 
   ngOnInit(): void {
     this.getProjects();
@@ -25,14 +25,15 @@ export class AssignUsersComponent implements OnInit {
   }
 
   getProjects() {
-    this.projectService.getAllProjects().subscribe(data => {
-      this.projects = data;
+    this.projectService.getAllProjects().subscribe((res: any) => {
+      this.projects = res?.data;
     });
   }
 
   getUsers() {
-    this.userService.getUsers().subscribe(data => {
-      this.users = data;
+    this.userService.getUsers().subscribe((data: any) => {
+      this.users = data?.users;
+      console.log(this.users);
     });
   }
 

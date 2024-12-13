@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./list-project.component.css']
 })
 export class ListProjectsComponent implements OnInit {
-  projects: any[] = [];
+  projects: any;
 
   constructor(private projectService: ProjectService,private router:Router) {}
 
@@ -27,8 +27,9 @@ export class ListProjectsComponent implements OnInit {
     this.router.navigate(['/project-management/assign-users'])
   }
   getAllProjects() {
-    this.projectService.getAllProjects().subscribe((data: any[]) => {
-      this.projects = data;
+
+    this.projectService.getAllProjects().subscribe((res: any) => {
+      this.projects = res.data;
     });
   }
   deleteProject(id: any) {

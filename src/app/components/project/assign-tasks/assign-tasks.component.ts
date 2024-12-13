@@ -25,8 +25,8 @@ export class AssignTasksComponent implements OnInit {
   }
 
   getProjects() {
-    this.projectService.getAllProjects().subscribe(data => {
-      this.projects = data;
+    this.projectService.getAllProjects().subscribe((res: any) => {
+      this.projects = res?.data;
     });
   }
 
@@ -37,7 +37,7 @@ export class AssignTasksComponent implements OnInit {
   assignTasks() {
     this.projectService.assignTaskToProject(this.taskAssignment).subscribe(
       response => {
-        console.log('Task assigned:', response);
+        this.router.navigate(['/project-management/list-project'])
       },
       error => {
         console.error('Error assigning tasks:', error);
