@@ -1,21 +1,32 @@
-<div class="container mt-5">
-    <h2>Assign Tasks to Project</h2>
-    <form (ngSubmit)="assignTasks()" #taskForm="ngForm">
-      <div class="form-group">
-        <label for="projectId">Select Project</label>
-        <select class="form-control" id="projectId" [(ngModel)]="taskAssignment.projectId" name="projectId" required>
-          <option *ngFor="let project of projects" [value]="project._id">{{ project.projectName }}</option>
-        </select>
+   <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-6 col-md-8 col-sm-12">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h3 class="text-center mb-4">Assign Tasks to Project</h3>
+            <form (ngSubmit)="assignTasks()" #taskForm="ngForm">
+              <div class="form-group">
+                <label for="projectId">Select Project</label>
+                <select class="form-control" id="projectId" [(ngModel)]="taskAssignment.projectId" name="projectId" required>
+                  <option *ngFor="let project of projects" [value]="project._id">{{ project.projectName }}</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="taskName">Task Name</label>
+                <input type="text" class="form-control" id="taskName" [(ngModel)]="taskAssignment.tasks[0].taskName" name="taskName" required>
+              </div>
+              <div class="form-group">
+                <label for="plannedHours">Planned Hours</label>
+                <input type="number" class="form-control" id="plannedHours" [(ngModel)]="taskAssignment.tasks[0].plannedHours" name="plannedHours" required>
+              </div>
+              <div class="d-flex justify-content-between mt-4">
+                <button type="submit" class="btn btn-success">Assign Task</button>
+                <button type="button" class="btn btn-outline-secondary" (click)="back()">Back</button>
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
-      <div class="form-group">
-        <label for="taskName">Task Name</label>
-        <input type="text" class="form-control" id="taskName" [(ngModel)]="taskAssignment.task.name" name="taskName" required>
-      </div>
-      <div class="form-group">
-        <label for="plannedHours">Planned Hours</label>
-        <input type="number" class="form-control" id="plannedHours" [(ngModel)]="taskAssignment.task.plannedHours" name="plannedHours" required>
-      </div>
-      <button type="submit" class="btn btn-success mt-3">Assign Task</button>
-    </form>
+    </div>
   </div>
   

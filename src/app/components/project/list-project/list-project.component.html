@@ -1,33 +1,41 @@
-<div class="container mt-5">
-  <h2>Project List</h2>
-  <div class="row">
-    <button class="mb-4" (click)="addproject()">Add User</button>
-    <div class="col-md-12">
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th scope="col">Project Name</th>
-            <th scope="col">Client Name</th>
-            <th scope="col">Department</th>
-            <th scope="col">Business Unit</th>
-            <th scope="col">Project Type</th>
-            <th scope="col">Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let project of projects">
-            <td>{{ project.projectName }}</td>
-            <td>{{ project.clientName }}</td>
-            <td>{{ project.department }}</td>
-            <td>{{ project.businessUnit }}</td>
-            <td>{{ project.projectType }}</td>
-            <td>
-              <button class="btn btn-warning btn-sm" (click)="editProject(project._id)">Edit</button>
-            <button class="btn btn-danger btn-sm" (click)="deleteProject(project._id)">Delete</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+<div class="container mt-4">
+  <h2 class="text-center mb-4">Project List</h2>
+
+  <!-- Action Buttons -->
+  <div class="d-flex justify-content-between mb-3">
+    <button class="btn btn-primary" (click)="addproject()">Add Project</button>
+    <div>
+      <button class="btn btn-success me-2" (click)="assignproject()">Assign Task</button>
+      <button class="btn btn-info" (click)="assignUsersToProject()">Assign Users</button>
     </div>
+  </div>
+
+  <!-- Project Table -->
+  <div class="table-responsive">
+    <table class="table table-bordered table-hover">
+      <thead class="table-dark">
+        <tr>
+          <th scope="col">Project Name</th>
+          <th scope="col">Client Name</th>
+          <th scope="col">Department</th>
+          <th scope="col">Business Unit</th>
+          <th scope="col">Project Type</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let project of projects">
+          <td>{{ project.projectName }}</td>
+          <td>{{ project.clientName }}</td>
+          <td>{{ project.department }}</td>
+          <td>{{ project.businessUnit }}</td>
+          <td>{{ project.projectType }}</td>
+          <td>
+            <button class="btn btn-warning btn-sm me-2" (click)="editProject(project._id)">Edit</button>
+            <button class="btn btn-danger btn-sm" (click)="deleteProject(project._id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>

@@ -25,4 +25,7 @@ export class UserAddComponent {
       this.router.navigate(['/user-management/user-management-list']);
     });
   }
+  back(){
+    this.router.navigate(['/user-management/user-management-list'])
+  }
 }

@@ -26,6 +26,8 @@ export class UserEditComponent implements OnInit {
       this.router.navigate(['/user-management/user-management-list']);
     });
   }
-
+  back(){
+    this.router.navigate(['/user-management/user-management-list'])
+  }
   
 }

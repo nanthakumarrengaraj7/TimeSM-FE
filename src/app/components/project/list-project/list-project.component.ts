@@ -15,10 +15,16 @@ export class ListProjectsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllProjects();
-  }
+  } 
 
   addproject(){
     this.router.navigate(['/project-management/add-project']);
+  }
+  assignproject(){
+    this.router.navigate(['/project-management/assign-task']);
+  }
+  assignUsersToProject(){
+    this.router.navigate(['/project-management/assign-users'])
   }
   getAllProjects() {
     this.projectService.getAllProjects().subscribe((data: any[]) => {

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ProjectService } from '../../../../services/project.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-project',
@@ -16,11 +17,14 @@ export class AddProjectComponent {
     projectType: ''
   };
 
-  constructor(private projectService: ProjectService) {}
+  constructor(private projectService: ProjectService,private router:Router) {}
 
   addProject() {
     this.projectService.addProject(this.project).subscribe(response => {
       console.log('Project added:', response);
     });
+  }
+  back(){
+    this.router.navigate(['/project-management/list-project'])
   }
 }

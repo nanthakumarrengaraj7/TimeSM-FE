@@ -25,9 +25,9 @@ export class UserListComponent implements OnInit {
 
   // Function to fetch users
   getUserList() {
-    this.userService.getUsers().subscribe((users:any) => {
-      this.users = users;
-      users.forEach((element:any) => {
+    this.userService.getUsers().subscribe((res:any) => {
+      this.users = res.users;
+      this.users.forEach((element:any) => {
         if(!this.departments.includes(element.department)){
           this.departments.push(element.department);
         }
@@ -35,7 +35,7 @@ export class UserListComponent implements OnInit {
           this.businessUnits.push(element.businessUnit);
         }
       });
-      this.filteredUsers = users; // Initialize filtered list
+      this.filteredUsers = this.users; // Initialize filtered list
     });
   }
 

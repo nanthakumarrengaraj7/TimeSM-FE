@@ -49,4 +49,7 @@ export class EditDuplicateProjectComponent implements OnInit {
       this.router.navigate(['/projects']);
     });
   }
+  back(){
+    this.router.navigate(['/project-management/list-project'])
+  }
 }

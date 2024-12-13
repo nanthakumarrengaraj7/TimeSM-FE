@@ -1,28 +1,60 @@
 <div class="container mt-5">
-    <h2>Edit or Duplicate Project</h2>
-    <form (ngSubmit)="editProject()" #projectForm="ngForm">
-      <div class="form-group">
-        <label for="projectName">Project Name</label>
-        <input type="text" class="form-control" id="projectName" [(ngModel)]="project.projectName" name="projectName" required>
+  <div class="row justify-content-center">
+    <div class="col-lg-6 col-md-8 col-sm-12">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h2 class="text-center mb-4">Edit or Duplicate Project</h2>
+
+          <form (ngSubmit)="editProject()" #projectForm="ngForm">
+            <!-- Project Name Field -->
+            <div class="mb-3">
+              <label for="projectName" class="form-label">Project Name</label>
+              <input type="text" class="form-control" id="projectName" [(ngModel)]="project.projectName"
+                name="projectName" required>
+            </div>
+
+            <!-- Client Name Field -->
+            <div class="mb-3">
+              <label for="clientName" class="form-label">Client Name</label>
+              <input type="text" class="form-control" id="clientName" [(ngModel)]="project.clientName" name="clientName"
+                required>
+            </div>
+
+            <!-- Department Field -->
+            <div class="mb-3">
+              <label for="department" class="form-label">Department</label>
+              <input type="text" class="form-control" id="department" [(ngModel)]="project.department" name="department"
+                required>
+            </div>
+
+            <!-- Business Unit Field -->
+            <div class="mb-3">
+              <label for="businessUnit" class="form-label">Business Unit</label>
+              <input type="text" class="form-control" id="businessUnit" [(ngModel)]="project.businessUnit"
+                name="businessUnit" required>
+            </div>
+
+            <!-- Project Type Field -->
+            <div class="mb-3">
+              <label for="projectType" class="form-label">Project Type</label>
+              <input type="text" class="form-control" id="projectType" [(ngModel)]="project.projectType"
+                name="projectType" required>
+            </div>
+
+            <!-- Buttons -->
+            <div class="d-flex justify-content-between mt-4">
+              <!-- Save Changes Button -->
+              <button type="submit" class="btn btn-primary">Save Changes</button>
+
+              <!-- Duplicate Project Button -->
+              <button type="button" class="btn btn-warning" (click)="duplicateProject()">Duplicate Project</button>
+            </div>
+
+            <!-- Back Button -->
+            <button type="button" class="btn btn-outline-secondary mt-3 w-100" (click)="back()">Back</button>
+          </form>
+        </div>
       </div>
-      <div class="form-group">
-        <label for="clientName">Client Name</label>
-        <input type="text" class="form-control" id="clientName" [(ngModel)]="project.clientName" name="clientName" required>
-      </div>
-      <div class="form-group">
-        <label for="department">Department</label>
-        <input type="text" class="form-control" id="department" [(ngModel)]="project.department" name="department" required>
-      </div>
-      <div class="form-group">
-        <label for="businessUnit">Business Unit</label>
-        <input type="text" class="form-control" id="businessUnit" [(ngModel)]="project.businessUnit" name="businessUnit" required>
-      </div>
-      <div class="form-group">
-        <label for="projectType">Project Type</label>
-        <input type="text" class="form-control" id="projectType" [(ngModel)]="project.projectType" name="projectType" required>
-      </div>
-      <button type="submit" class="btn btn-primary mt-3">Save Changes</button>
-      <button type="button" class="btn btn-warning mt-3" (click)="duplicateProject()">Duplicate Project</button>
-    </form>
+    </div>
   </div>
-  
+</div>

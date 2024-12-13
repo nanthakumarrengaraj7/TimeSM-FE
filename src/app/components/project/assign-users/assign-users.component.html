@@ -1,4 +1,4 @@
-<div class="container mt-5">
+<!-- <div class="container mt-5">
     <h2>Assign Users to Project</h2>
     <form (ngSubmit)="assignUsers()" #userForm="ngForm">
       <div class="form-group">
@@ -14,6 +14,37 @@
         </select>
       </div>
       <button type="submit" class="btn btn-success mt-3">Assign Users</button>
+      <button type="button" class="btn btn-outline-secondary" (click)="back()">Back</button>
     </form>
+  </div>
+   -->
+   <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-6 col-md-8 col-sm-12">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h3 class="text-center mb-4">Assign Users to Project</h3>
+            <form (ngSubmit)="assignUsers()" #userForm="ngForm">
+              <div class="form-group">
+                <label for="projectId">Select Project</label>
+                <select class="form-control" id="projectId" [(ngModel)]="assignment.projectId" name="projectId" required>
+                  <option *ngFor="let project of projects" [value]="project._id">{{ project.projectName }}</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="users">Select Users</label>
+                <select class="form-control" id="users" [(ngModel)]="assignment.users" name="users" multiple required>
+                  <option *ngFor="let user of users" [value]="user._id">{{ user.name }}</option>
+                </select>
+              </div>
+              <div class="d-flex justify-content-between mt-4">
+                <button type="submit" class="btn btn-success">Assign Users</button>
+                <button type="button" class="btn btn-outline-secondary" (click)="back()">Back</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   

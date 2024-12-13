@@ -11,6 +11,8 @@ import { ListProjectsComponent } from './list-project/list-project.component';
 import { SearchProjectComponent } from './search-project/search-project.component';
 import { ProjectRoutingModule } from './project.routing.module';
 import { ProjectService } from '../../../services/project.service';
+import { UserService } from '../../../services/user.service';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 
 @NgModule({
@@ -26,8 +28,9 @@ import { ProjectService } from '../../../services/project.service';
     ProjectRoutingModule,
     CommonModule,
     FormsModule,
+    NgSelectModule,
     HttpClientModule
   ],
-  providers: [AuthService, ProjectService]
+  providers: [AuthService, ProjectService,UserService]
 })
 export class ProjectModule {}

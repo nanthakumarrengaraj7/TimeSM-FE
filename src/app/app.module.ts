@@ -6,9 +6,12 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { UserService } from '../services/user.service';
+import { AuthService } from '../services/auth.service';
 
 @NgModule({
   declarations: [
@@ -22,9 +25,10 @@ import { AppRoutingModule } from './app-routing.module';
     MatSidenavModule,
     MatIconModule,
     MatButtonModule,
-    MatListModule
+    MatListModule,
+    NgSelectModule
   ],
-  providers: [],
+  providers: [UserService,AuthService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

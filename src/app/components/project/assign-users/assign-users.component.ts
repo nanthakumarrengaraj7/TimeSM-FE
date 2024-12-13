@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProjectService } from '../../../../services/project.service';
 import { UserService } from '../../../../services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-assign-users',
@@ -16,7 +17,7 @@ export class AssignUsersComponent implements OnInit {
     users: []
   };
 
-  constructor(private projectService: ProjectService, private userService: UserService) {}
+  constructor(private projectService: ProjectService, private userService: UserService,private router:Router) {}
 
   ngOnInit(): void {
     this.getProjects();
@@ -39,5 +40,8 @@ export class AssignUsersComponent implements OnInit {
     this.projectService.assignUsersToProject(this.assignment).subscribe(response => {
       console.log('Users assigned:', response);
     });
+  }
+  back(){
+    this.router.navigate(['/project-management/list-project'])
   }
 }
