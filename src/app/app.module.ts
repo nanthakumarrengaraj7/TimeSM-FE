@@ -12,11 +12,16 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { UserService } from '../services/user.service';
 import { AuthService } from '../services/auth.service';
-import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { LoginComponent } from './components/login/login.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ProjectService } from '../services/project.service';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { AuthInterceptor } from './interceptors.service';
 
 @NgModule({
   declarations: [
     AppComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -27,9 +32,16 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
     MatIconModule,
     MatButtonModule,
     MatListModule,
-    NgSelectModule
+    NgSelectModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [UserService,AuthService],
+  providers: [UserService, AuthService, ProjectService, 
+    {
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

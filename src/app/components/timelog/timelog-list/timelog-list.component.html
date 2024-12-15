@@ -1,0 +1,87 @@
+<div class="container mt-4">
+    <h3 class="text-center mb-4">Log List</h3>
+
+    <!-- Add Log Button -->
+    <div class="d-flex justify-content-end mb-3">
+        <button class="btn btn-primary" (click)="addlog()">Add Time Log</button>
+    </div>
+
+    <!-- Filters Section -->
+    <div class="row mb-3">
+        <div class="col-md-4">
+            <input type="text" class="form-control" placeholder="Search By User" [(ngModel)]="searchTerm"
+                (input)="filterLogs()" />
+        </div>
+        <div class="col-md-4">
+            <label for="periodSelect" class="form-label">Select Period</label>
+            <select id="periodSelect" class="form-select" [(ngModel)]="selectedPeriod" (change)="updateChartData()">
+                <option *ngFor="let period of periods" [value]="period">
+                    {{ period }}
+                </option>
+            </select>
+        </div>
+    </div>
+
+    <!-- <div class="chart-container">
+        <ngx-charts-pie-chart
+          [view]="[700, 400]"
+          [results]="chartData"
+          [legend]="true"
+          [explodeSlices]="true"
+          [labels]="true"
+          [doughnut]="false"
+        >
+        </ngx-charts-pie-chart>
+      </div> -->
+
+
+    <!-- Logs Table -->
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+            <thead class="table-dark">
+                <tr>
+                    <th>User Name</th>
+                    <th>Date</th>
+                    <th>Project</th>
+                    <th>Task</th>
+                    <th>Hours</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let log of filteredLog">
+                    <td>{{ log.username }}</td>
+                    <td>{{ log.date | date: 'yyyy-MM-dd' : 'IST'}}</td>
+                    <td>{{ log.projectname }}</td>
+                    <td>{{ log.task }}</td>
+                    <td>{{ log.hours }}</td>
+                    <td>{{ log.taskstatus }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- <div class="table-responsive" *ngIf="isNotDay">
+        <table class="table table-bordered table-hover">
+            <thead class="table-dark">
+                <tr>
+                    <th>User Name</th>
+                    <th >Date</th>
+                    <th>Project</th>
+                    <th>Task</th>
+                    <th>Hours</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let log of filteredLog">
+                    <td>{{ logs[0].username }}</td>
+                    <td >{{ log.date | date: 'yyyy-MM-dd' : 'IST'}}</td>
+                    <td>{{ log.projectname }}</td>
+                    <td>{{ log.task }}</td>
+                    <td>{{ log.hours }}</td>
+                    <td>{{ log.taskstatus }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div> -->
+</div>

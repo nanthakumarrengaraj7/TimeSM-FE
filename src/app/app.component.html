@@ -1,5 +1,5 @@
 <!-- Header -->
-<nav class="navbar navbar-dark bg-primary sticky-top">
+<nav *ngIf="showLayout" class="navbar navbar-dark bg-primary sticky-top">
   <div class="container-fluid d-flex align-items-center justify-content-between">
     <!-- Logo -->
     <div class="d-flex align-items-center">
@@ -19,7 +19,7 @@
 </nav>
 
 <!-- Sidenav and Content -->
-<div class="container-fluid">
+<div *ngIf="showLayout" class="container-fluid">
   <div class="row">
     <!-- Sidenav -->
     <nav class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
@@ -41,7 +41,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="/timelog-management" routerLinkActive="active">
+            <a class="nav-link" routerLink="/timelog/timelog-list" routerLinkActive="active">
               <i class="bi bi-clock me-2"></i> Timelog Management
             </a>
           </li>
@@ -54,4 +54,9 @@
       <router-outlet></router-outlet>
     </main>
   </div>
+</div>
+
+<!-- Content Only for Login -->
+<div *ngIf="!showLayout">
+  <router-outlet></router-outlet>
 </div>
