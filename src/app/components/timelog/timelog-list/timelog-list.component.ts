@@ -16,7 +16,7 @@ export class TimelogListComponent {
   periods: ('Day' | 'Week' | 'Month' | 'Year')[] = ['Day', 'Week', 'Month', 'Year'];
   selectedPeriod: 'Day' | 'Week' | 'Month' | 'Year' = 'Day';
   chartData: { name: string; value: number }[] = [];
-  isNotDay = true;
+  Day : Boolean = true;
 
   dataByPeriod: { [key in 'Day' | 'Week' | 'Month' | 'Year']: { name: string; value: number }[] } = {
     Day: [
@@ -42,33 +42,48 @@ export class TimelogListComponent {
   };
   totalHours: any;
   allProjectName: any;
+  userData: any;
+  filterType = { 'type': 'Day'};
 
-  constructor(private timeLogService: TimeLogService,private router:Router) {}
+  constructor(private timeLogService: TimeLogService,private router:Router) {
+    const userdata = localStorage.getItem('user');
+    if(userdata) {
+      this.userData = JSON.parse(userdata);
+    }
+  }
 
   updateChartData(): void {
     this.chartData = this.dataByPeriod[this.selectedPeriod];
-    console.log('sk', this.selectedPeriod)
-    if(this.selectedPeriod !== 'Day'){
-      this.isNotDay = true;
+    this.filterType = { 'type': this.selectedPeriod }
+    if(this.selectedPeriod == 'Day'){
+      this.Day = true;
+      this.getLogList();
     } else {
-      this.isNotDay = false;
+      this.Day = false;
+      this.getLogList()
     }
   }
 
   ngOnInit() {
     this.getLogList();
-    this.updateChartData();
+    // this.updateChartData();
   }
 
   // Function to fetch users
   async getLogList() {
-    this.timeLogService.getLogs().subscribe((res:any) => {
-      this.logs = res?.data;
-      this.filteredLog = this.logs; // Initialize filtered list
-      this.totalHours = this.logs.reduce((sum, log) => sum + Number(log.hours), 0);
-      this.allProjectName = this.logs.forEach((name, log) => ',' + name );
-      console.log(this.allProjectName);
-    });
+    this.filteredLog = [];
+    if(this.userData.usertype == 'admin'){
+      this.timeLogService.getLogs(this.filterType).subscribe((res:any) => {
+        this.logs = res?.data;
+        this.filteredLog = this.logs; // Initialize filtered list
+        console.log(this.filteredLog[0][0]);
+      });
+    } else {
+      this.timeLogService.getUserLog(this.userData._id, this.filterType).subscribe((res:any) => {
+        this.logs = res?.data;
+        this.filteredLog = this.logs; // Initialize filtered list
+      });
+    }
   }
 
   // Function to filter users

@@ -13,7 +13,6 @@
                 (input)="filterLogs()" />
         </div>
         <div class="col-md-4">
-            <label for="periodSelect" class="form-label">Select Period</label>
             <select id="periodSelect" class="form-select" [(ngModel)]="selectedPeriod" (change)="updateChartData()">
                 <option *ngFor="let period of periods" [value]="period">
                     {{ period }}
@@ -36,7 +35,7 @@
 
 
     <!-- Logs Table -->
-    <!-- <div class="table-responsive">
+    <div class="table-responsive" *ngIf="Day">
         <table class="table table-bordered table-hover">
             <thead class="table-dark">
                 <tr>
@@ -59,8 +58,8 @@
                 </tr>
             </tbody>
         </table>
-    </div> -->
-    <div class="table-responsive">
+    </div>
+    <div class="table-responsive" *ngIf="!Day">
         <table class="table table-bordered table-hover">
             <thead class="table-dark">
                 <tr>
@@ -71,29 +70,17 @@
                 </tr>
             </thead>
             <tbody>
-                <!-- Loop through each log entry -->
-                <tr *ngFor="let log of filteredLog1">
-                    <!-- User Name and Date with rowspan for multiple projects -->
-                    <td [attr.rowspan]="log.projectname.length">{{ log.username }}</td>
-                    <td [attr.rowspan]="log.projectname.length">{{ log.date }}</td>
-
-                    <!-- Displaying the Hours -->
+                <tr *ngFor="let log of filteredLog">
+                    <td>{{ log.username }}</td>
+                    <td>{{ log.date }}</td>
                     <td>{{ log.hours }}</td>
-    
-                    <!-- Loop through the projectnames for this log entry -->
-                    <ng-container *ngFor="let project of log.projectname; let j = index">
-                        
-                        <tr>
-                            <!-- Combined Project - Task - Status -->
-                            <td>{{ project }} - {{ log.task[j] }} - {{ log.taskstatus[j] }}</td>
-    
-                           
-                        </tr>
-                    </ng-container>
-                     
+                    <td>
+                        <div *ngFor="let project of log.projectname; let j = index">
+                          {{ project }} - {{ log.task[j] }} - {{ log.taskstatus[j] }}
+                        </div>
+                      </td>
                 </tr>
             </tbody>
         </table>
     </div>
-    
 </div>

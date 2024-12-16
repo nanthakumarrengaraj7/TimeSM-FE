@@ -11,15 +11,15 @@ export class TimeLogService {
 
   constructor(private http: HttpClient) {}
 
-  getLogs(): Observable<any> {
-    return this.http.get<any>(this.apiUrl+'/loglist');
+  getLogs(data: any): Observable<any> {
+    return this.http.post<any>(this.apiUrl+'/loglist', data);
   }
 
   addLog(data: any): Observable<any> {
     return this.http.post<any>(this.apiUrl+'/newlog', data);
   }
 
-  getUseLog(id: any): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/`+'loglist/'+id);
+  getUserLog(id: any, data: any): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/`+'loglist/'+id, data);
   }
 }
