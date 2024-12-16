@@ -19,7 +19,8 @@
             <!-- Project Name Field -->
             <div class="mb-3">
               <label for="projectname" class="form-label">Project Name</label>
-              <input type="text" id="projectname" class="form-control" [(ngModel)]="logData.projectname" name="projectname" required>
+              <input type="text" id="projectname" class="form-control" [(ngModel)]="logData.projectname"
+                name="projectname" required>
             </div>
 
             <!-- Task Field -->
@@ -37,7 +38,10 @@
             <!-- Task Status Field -->
             <div class="mb-3">
               <label for="taskstatus" class="form-label">Task Status</label>
-              <input type="text" id="taskstatus" class="form-control" [(ngModel)]="logData.taskstatus" name="taskstatus" required>
+              <select id="taskstatus" class="form-select" [(ngModel)]="logData.taskstatus" name="taskstatus" required>
+                <option value="Completed">Completed</option>
+                <option value="InProgress">Inprogress</option>
+              </select>
             </div>
 
             <!-- Action Buttons -->

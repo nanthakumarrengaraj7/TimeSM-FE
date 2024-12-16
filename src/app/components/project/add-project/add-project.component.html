@@ -26,48 +26,73 @@
     </form>
   </div> -->
 
+
   <div class="container mt-5">
     <div class="row justify-content-center">
       <div class="col-lg-8 col-md-10 col-sm-12">
         <div class="card shadow-sm">
           <div class="card-body">
             <h3 class="text-center mb-4">Add New Project</h3>
-            <form (ngSubmit)="addProject()" #projectForm="ngForm">
+            <form (ngSubmit)="addProject()" #projectForm="ngForm" novalidate>
+    
+              <!-- Project Name Field -->
               <div class="form-group">
                 <label for="projectName">Project Name</label>
-                <input type="text" class="form-control" id="projectName" [(ngModel)]="project.projectName" name="projectName" required>
+                <input type="text" class="form-control" id="projectName" [(ngModel)]="project.projectName" name="projectName" required #projectName="ngModel">
+                <div *ngIf="projectName.invalid && (projectName.dirty || projectName.touched)" class="text-danger">
+                  <div *ngIf="projectName.errors?.['required']">Project Name is required.</div>
+                </div>
               </div>
-  
+    
+              <!-- Client Name Field -->
               <div class="form-group">
                 <label for="clientName">Client Name</label>
-                <input type="text" class="form-control" id="clientName" [(ngModel)]="project.clientName" name="clientName" required>
+                <input type="text" class="form-control" id="clientName" [(ngModel)]="project.clientName" name="clientName" required #clientName="ngModel">
+                <div *ngIf="clientName.invalid && (clientName.dirty || clientName.touched)" class="text-danger">
+                  <div *ngIf="clientName.errors?.['required']">Client Name is required.</div>
+                </div>
               </div>
-  
+    
+              <!-- Department Field -->
               <div class="form-group">
                 <label for="department">Department</label>
-                <input type="text" class="form-control" id="department" [(ngModel)]="project.department" name="department" required>
+                <input type="text" class="form-control" id="department" [(ngModel)]="project.department" name="department" required #department="ngModel">
+                <div *ngIf="department.invalid && (department.dirty || department.touched)" class="text-danger">
+                  <div *ngIf="department.errors?.['required']">Department is required.</div>
+                </div>
               </div>
-  
+    
+              <!-- Business Unit Field -->
               <div class="form-group">
                 <label for="businessUnit">Business Unit</label>
-                <input type="text" class="form-control" id="businessUnit" [(ngModel)]="project.businessUnit" name="businessUnit" required>
+                <input type="text" class="form-control" id="businessUnit" [(ngModel)]="project.businessUnit" name="businessUnit" required #businessUnit="ngModel">
+                <div *ngIf="businessUnit.invalid && (businessUnit.dirty || businessUnit.touched)" class="text-danger">
+                  <div *ngIf="businessUnit.errors?.['required']">Business Unit is required.</div>
+                </div>
               </div>
-  
+    
+              <!-- Project Type Field -->
               <div class="form-group">
                 <label for="projectType">Project Type</label>
-                <input type="text" class="form-control" id="projectType" [(ngModel)]="project.projectType" name="projectType" required>
+                <input type="text" class="form-control" id="projectType" [(ngModel)]="project.projectType" name="projectType" required #projectType="ngModel">
+                <div *ngIf="projectType.invalid && (projectType.dirty || projectType.touched)" class="text-danger">
+                  <div *ngIf="projectType.errors?.['required']">Project Type is required.</div>
+                </div>
               </div>
-  
+    
+              <!-- Buttons -->
               <div class="form-group d-flex justify-content-between mt-4">
-                <button type="submit" class="btn btn-success">Add Project</button>
+                <button type="submit" class="btn btn-success" [disabled]="projectForm.invalid">Add Project</button>
                 <button type="button" class="btn btn-outline-secondary" (click)="back()">Back</button>
               </div>
+    
             </form>
           </div>
         </div>
       </div>
     </div>
   </div>
+  
   
   
   

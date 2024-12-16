@@ -10,6 +10,48 @@
     </div>
   </div>
 
+  <!-- Filters Section -->
+  <div class="row mb-3">
+    <!-- Search by Project Name -->
+    <div class="col-md-4">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Search by Project Name"
+        [(ngModel)]="searchTerm"
+        (input)="filterProjects()"
+      />
+    </div>
+
+    <!-- Filter by Department -->
+    <div class="col-md-4">
+      <select
+        class="form-control"
+        [(ngModel)]="selectedDepartment"
+        (change)="filterProjects()"
+      >
+        <option value="">All Departments</option>
+        <option *ngFor="let department of departments" [value]="department">
+          {{ department }}
+        </option>
+      </select>
+    </div>
+
+    <!-- Filter by Business Unit -->
+    <div class="col-md-4">
+      <select
+        class="form-control"
+        [(ngModel)]="selectedBusinessUnit"
+        (change)="filterProjects()"
+      >
+        <option value="">All Business Units</option>
+        <option *ngFor="let bu of businessUnits" [value]="bu">
+          {{ bu }}
+        </option>
+      </select>
+    </div>
+  </div>
+
   <!-- Project Table -->
   <div class="table-responsive">
     <table class="table table-bordered table-hover">
@@ -24,7 +66,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let project of projects">
+        <tr *ngFor="let project of filteredProjects">
           <td>{{ project.projectName }}</td>
           <td>{{ project.clientName }}</td>
           <td>{{ project.department }}</td>
@@ -39,3 +81,5 @@
     </table>
   </div>
 </div>
+
+

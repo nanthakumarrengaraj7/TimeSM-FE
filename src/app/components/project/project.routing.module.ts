@@ -26,6 +26,6 @@ const userRoutes: Routes = [
     RouterModule.forChild(userRoutes),
   ],
   providers: [AuthService, ProjectService],
-  exports: [RouterModule]
+  exports: [RouterModule] 
 })
 export class ProjectRoutingModule {}
