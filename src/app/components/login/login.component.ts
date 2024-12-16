@@ -34,7 +34,7 @@ export class LoginComponent {
           // Save the token to localStorage (or a more secure storage method)
           localStorage.setItem('accessToken', data.accessToken);
           localStorage.setItem('user', JSON.stringify(data));
-          this.router.navigate(['/dashboard']); // Redirect to dashboard or another page
+          this.router.navigate(['/dashboard/dashboard-view']); // Redirect to dashboard or another page
         },
         (error) => {
           this.errorMessage = error.error.message || 'Invalid credentials';

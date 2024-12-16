@@ -17,29 +17,6 @@ export class TimelogListComponent {
   selectedPeriod: 'Day' | 'Week' | 'Month' | 'Year' = 'Day';
   chartData: { name: string; value: number }[] = [];
   Day : Boolean = true;
-
-  dataByPeriod: { [key in 'Day' | 'Week' | 'Month' | 'Year']: { name: string; value: number }[] } = {
-    Day: [
-      { name: 'Task A', value: 5 },
-      { name: 'Task B', value: 3 },
-      { name: 'Task C', value: 2 },
-    ],
-    Week: [
-      { name: 'Task A', value: 25 },
-      { name: 'Task B', value: 15 },
-      { name: 'Task C', value: 10 },
-    ],
-    Month: [
-      { name: 'Task A', value: 100 },
-      { name: 'Task B', value: 70 },
-      { name: 'Task C', value: 30 },
-    ],
-    Year: [
-      { name: 'Task A', value: 1200 },
-      { name: 'Task B', value: 800 },
-      { name: 'Task C', value: 400 },
-    ],
-  };
   totalHours: any;
   allProjectName: any;
   userData: any;
@@ -53,7 +30,6 @@ export class TimelogListComponent {
   }
 
   updateChartData(): void {
-    this.chartData = this.dataByPeriod[this.selectedPeriod];
     this.filterType = { 'type': this.selectedPeriod }
     if(this.selectedPeriod == 'Day'){
       this.Day = true;
@@ -76,7 +52,7 @@ export class TimelogListComponent {
       this.timeLogService.getLogs(this.filterType).subscribe((res:any) => {
         this.logs = res?.data;
         this.filteredLog = this.logs; // Initialize filtered list
-        console.log(this.filteredLog[0][0]);
+        // console.log(this.filteredLog[0][0]);
       });
     } else {
       this.timeLogService.getUserLog(this.userData._id, this.filterType).subscribe((res:any) => {

@@ -17,6 +17,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ProjectService } from '../services/project.service';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './interceptors.service';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -34,7 +39,14 @@ import { AuthInterceptor } from './interceptors.service';
     MatListModule,
     NgSelectModule,
     ReactiveFormsModule,
-    HttpClientModule
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatIconModule,
+    MatButtonModule,
+    MatNativeDateModule,
+    HttpClientModule,
+    NgxChartsModule
   ],
   providers: [UserService, AuthService, ProjectService, 
     {
