@@ -17,8 +17,20 @@ export class ListProjectsComponent implements OnInit {
   selectedBusinessUnit: string = ''; // Selected business unit for filtering
   departments: string[] = []; // List of departments for the department filter
   businessUnits: string[] = []; // List of business units for the business unit filter
+  userData: any;
+  isAdmin=false;
 
-  constructor(private projectService: ProjectService, private router: Router) {}
+  constructor(private projectService: ProjectService, private router: Router) {
+    const userdata = localStorage.getItem('user');
+    if(userdata) {
+      this.userData = JSON.parse(userdata);
+    }
+    if(this.userData.usertype == 'admin'){
+      this.isAdmin=true;
+    } else{
+      this.isAdmin=false;
+    }
+  }
 
   ngOnInit(): void {
     this.getAllProjects();

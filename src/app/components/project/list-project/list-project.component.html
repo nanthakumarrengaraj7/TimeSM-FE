@@ -2,7 +2,7 @@
   <h2 class="text-center mb-4">Project List</h2>
 
   <!-- Action Buttons -->
-  <div class="d-flex justify-content-between mb-3">
+  <div class="d-flex justify-content-between mb-3" *ngIf="isAdmin">
     <button class="btn btn-primary" (click)="addproject()">Add Project</button>
     <div>
       <button class="btn btn-success me-2" (click)="assignproject()">Assign Task</button>
@@ -62,7 +62,7 @@
           <th scope="col">Department</th>
           <th scope="col">Business Unit</th>
           <th scope="col">Project Type</th>
-          <th scope="col">Actions</th>
+          <th scope="col" *ngIf="isAdmin">Actions</th>
         </tr>
       </thead>
       <tbody>
@@ -72,7 +72,7 @@
           <td>{{ project.department }}</td>
           <td>{{ project.businessUnit }}</td>
           <td>{{ project.projectType }}</td>
-          <td>
+          <td *ngIf="isAdmin">
             <button class="btn btn-warning btn-sm me-2" (click)="editProject(project._id)">Edit</button>
             <button class="btn btn-danger btn-sm" (click)="deleteProject(project._id)">Delete</button>
           </td>

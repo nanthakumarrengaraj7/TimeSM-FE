@@ -2,7 +2,7 @@
   <h3 class="text-center mb-4">User List</h3>
 
   <!-- Add User Button -->
-  <div class="d-flex justify-content-end mb-3">
+  <div class="d-flex justify-content-end mb-3" *ngIf="isAdmin">
       <button class="btn btn-primary" (click)="adduser()">Add User</button>
   </div>
 
@@ -53,7 +53,7 @@
                   <th>Phone</th>
                   <th>Department</th>
                   <th>Business Unit</th>
-                  <th>Actions</th>
+                  <th *ngIf="isAdmin">Actions</th>
               </tr>
           </thead>
           <tbody>
@@ -63,7 +63,7 @@
                   <td>{{ user.phone }}</td>
                   <td>{{ user.department }}</td>
                   <td>{{ user.businessUnit }}</td>
-                  <td>
+                  <td *ngIf="isAdmin">
                       <button class="btn btn-warning btn-sm me-2" (click)="editUser(user._id)">Edit</button>
                       <button class="btn btn-danger btn-sm" (click)="deleteUser(user._id)">Delete</button>
                   </td>

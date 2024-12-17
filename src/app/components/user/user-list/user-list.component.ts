@@ -16,8 +16,20 @@ export class UserListComponent implements OnInit {
   businessUnits: string[] = [];
   selectedDepartment: string = ''; // For filtering by department
   selectedBusinessUnit: string = ''; 
+  userData: any;
+  isAdmin=false;
 
-  constructor(private userService: UserService,private router:Router) {}
+  constructor(private userService: UserService,private router:Router) {
+    const userdata = localStorage.getItem('user');
+    if(userdata) {
+      this.userData = JSON.parse(userdata);
+    }
+    if(this.userData.usertype == 'admin'){
+      this.isAdmin=true;
+    } else{
+      this.isAdmin=false;
+    }
+  }
 
   ngOnInit() {
     this.getUserList();
