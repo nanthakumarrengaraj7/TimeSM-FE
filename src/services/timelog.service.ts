@@ -22,4 +22,6 @@ export class TimeLogService {
   getUserLog(id: any, data: any): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/`+'loglist/'+id, data);
   }
+
+
 }

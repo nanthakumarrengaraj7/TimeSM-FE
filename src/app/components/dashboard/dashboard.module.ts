@@ -14,6 +14,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardViewComponent } from './dashboard-view/dashboard-view.component';
 
+
 @NgModule({
   declarations: [
     DashboardViewComponent

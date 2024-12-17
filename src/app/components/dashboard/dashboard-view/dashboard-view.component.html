@@ -1,7 +1,5 @@
-<div class="container mt-4">
+ <!-- <div class="container mt-4">
   <h3 class="text-center mb-4">Dashboard</h3>
-
-  <!-- Filters Section -->
   <div class="row mb-3">
     <div class="col-md-4">
       <select
@@ -27,5 +25,59 @@
       [animations]="true"
     >
     </ngx-charts-bar-vertical>
+  </div>
+</div> 
+ -->
+
+
+ <div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-8 col-md-10 col-sm-12">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h3 class="text-center mb-4">Project Performance Dashboard</h3>
+
+          <div class="mb-4">
+            <label for="period" class="form-label">Select Period:</label>
+            <select [(ngModel)]="selectedPeriod" (change)="updateChartData()" class="form-select" id="period" name="period">
+              <option *ngFor="let period of periods" [value]="period">{{ period }}</option>
+            </select>
+          </div>
+
+          <div class="chart-container">
+            <ngx-charts-bar-vertical
+              [results]="chartData"
+              [scheme]="colorScheme"
+              [xAxis]="true"
+              [yAxis]="true"
+              [legend]="true"
+              [showDataLabel]="true"
+              [animations]="true">
+            </ngx-charts-bar-vertical>
+          </div>
+
+          <div class="mt-5">
+            <h4 class="mb-3">Performance Data</h4>
+            <table class="table table-bordered table-hover">
+              <thead class="table-dark">
+                <tr>
+                  <th scope="col">Task</th>
+                  <th scope="col">Current</th>
+                  <th scope="col">Previous</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let task of dataByPeriod[selectedPeriod]">
+                  <td>{{ task.name }}</td>
+                  <td>{{ task.current }}</td>
+                  <td>{{ task.previous }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+      </div>
+    </div>
   </div>
 </div>
