@@ -47,7 +47,7 @@ export class EditDuplicateProjectComponent implements OnInit {
     const { _id, ...dataWithoutId } = this.project;
     const duplicateProject = { ...dataWithoutId, projectName: `${this.project.projectName} - Copy` };
     this.projectService.addProject(duplicateProject).subscribe((response:any) => {
-      console.log('Project duplicated:', response);
+      //console.log('Project duplicated:', response);
       this.router.navigate(['/project-management/list-project'])
     });
   }

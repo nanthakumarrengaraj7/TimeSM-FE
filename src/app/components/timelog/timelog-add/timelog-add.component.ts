@@ -39,7 +39,7 @@ export class TimelogAddComponent {
           this.projectList.push(element.department);
         }
       });
-    });
+    }); 
   }
 
   addLog() {

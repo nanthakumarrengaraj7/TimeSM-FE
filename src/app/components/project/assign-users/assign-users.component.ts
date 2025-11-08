@@ -40,6 +40,8 @@ export class AssignUsersComponent implements OnInit {
   assignUsers() {
     this.projectService.assignUsersToProject(this.assignment).subscribe(response => {
       console.log('Users assigned:', response);
+      this.router.navigate(['/project-management/list-project'])
+      alert('User Assigned successfully');
     });
   }
   back(){

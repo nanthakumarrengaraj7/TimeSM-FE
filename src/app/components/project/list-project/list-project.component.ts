@@ -50,7 +50,7 @@ export class ListProjectsComponent implements OnInit {
   getDepartments(projects: any[]) {
     const departments = new Set<string>();
     projects.forEach((project) => departments.add(project.department));
-    return Array.from(departments);
+    return Array.from(departments);//convert set into array
   }
 
   // Get unique business units from the projects

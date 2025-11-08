@@ -38,6 +38,7 @@ export class AssignTasksComponent implements OnInit {
     this.projectService.assignTaskToProject(this.taskAssignment).subscribe(
       response => {
         this.router.navigate(['/project-management/list-project'])
+        alert('Task Assign successfully');
       },
       error => {
         console.error('Error assigning tasks:', error);
