@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ProjectService {
-  private apiUrl = 'http://localhost:3000/api/project';
+  private apiUrl = 'https://timesm-be.onrender.com/api/project';
   constructor(private http: HttpClient) {}
 
   // Fetch all projects

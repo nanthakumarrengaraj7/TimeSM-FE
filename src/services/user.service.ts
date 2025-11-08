@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UserService {
-  private apiUrl = 'http://localhost:3000/api/user';  // Example API endpoint
+  private apiUrl = 'https://timesm-be.onrender.com/api/user';  // Example API endpoint
 
   constructor(private http: HttpClient) {}
 

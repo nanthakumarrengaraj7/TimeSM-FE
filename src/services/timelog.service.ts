@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class TimeLogService {
-  private apiUrl = 'http://localhost:3000/api/timelog';  // Example API endpoint
+  private apiUrl = 'https://timesm-be.onrender.com/api/timelog';  // Example API endpoint
 
   constructor(private http: HttpClient) {}
 
